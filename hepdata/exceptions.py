@@ -10,11 +10,13 @@ APP_ERRORS = {
 
 class HEPError(Exception):
     """Generalizes any server/application errors"""
-    def __init__(self, msg=None, code=None):
+    def __init__(self, msg=None, code=None, response=None):
         super(HEPError, self).__init__(msg)
         self.code = code
         if code > 200:
             self.msg = "HTTP {}".format(code)
+            if response is not None:
+                self.msg += " ({})".format(response.request.url)
         else:
             self.msg = "Error {}: {}".format(code, APP_ERRORS.get(code, "Unknown"))
 

@@ -97,7 +97,7 @@ class GiftsClient(object):
         response = requests.get(self._get_url(action, param, **query))
 
         if response.status_code != 200:
-            raise exceptions.HEPError(code=response.status_code)
+            raise exceptions.HEPError(code=response.status_code, response=response)
 
         data = xmltodict.parse(response.content)
 
