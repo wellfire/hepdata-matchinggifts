@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import urllib
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
+
 import requests
 import xmltodict
 
@@ -87,7 +91,7 @@ class GiftsClient(object):
             url += "{param}/".format(param=param)
 
         if query:
-            url += "?{q}".format(q=urllib.urlencode(query))
+            url += "?{q}".format(q=urlencode(query))
         return url
 
     def _req(self, action, param=None, **query):
