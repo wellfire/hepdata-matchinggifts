@@ -107,7 +107,7 @@ class GiftsClient(object):
 
         return data
 
-    def get_profile(self, profile_id):
+    def profile(self, profile_id):
         """
         Returns detailed profile information about a company.
         """
