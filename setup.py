@@ -1,12 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+import sys
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    os.system('python setup.py bdist_wheel upload')
+    sys.exit()
+
+with open("hepdata/__init__.py", "r") as module_file:
+    for line in module_file:
+        if line.startswith("__version__"):
+            version_string = line.split("=")[1]
+            version = version_string.strip().replace("'", "")
 
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
@@ -18,7 +30,7 @@ requirements = [
 
 setup(
     name='hepdata',
-    version='0.1.0',
+    version=version,
     description='HEPdata',
     long_description=readme + '\n\n' + history,
     author='Ben Lopatin',
