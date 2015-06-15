@@ -33,3 +33,7 @@ class TestClient(unittest.TestCase):
             c._get_url("profiles", 1234, city="Arlington, VA"),
             "http://automatch.matchinggifts.com/profiles/xml/AABBCC/1234/?city=Arlington%2C+VA",
         )
+
+
+if __name__ == '__main__':
+    unittest.main()

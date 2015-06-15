@@ -2,7 +2,7 @@
 
 
 APP_ERRORS = {
-    7: "Access denied",
+    8: "IP address not whitelisted",
     9: "No profile matches the provided ID",
     10: "License key error",
 }
