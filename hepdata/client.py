@@ -113,7 +113,7 @@ class GiftsClient(object):
         """
         return self._req(action="profiles", param=profile_id)
 
-    def search(self, search_value, path="search", **query):
+    def search(self, search_value, path="searches", **query):
         """
         """
         for k in query.keys():
@@ -123,4 +123,4 @@ class GiftsClient(object):
         return self._req(action=path, param=search_value, **query)
 
     def search_names(self, search_value, **query):
-        return self.search(search_value, path="search_names", **query)
+        return self.search(search_value, path="name_searches", **query)
