@@ -76,6 +76,21 @@ ELIGIBILITY_PARAMS = [
 VALID_PARAMS = set(SEARCH_PARAMS + ELIGIBILITY_PARAMS)
 
 
+def clean_data(data):
+    """
+    The API returns the company results as a list for multiple results
+    and a dictionary for just a single result. This requires unnecessary
+    type checking everywhere else so just enforcing a list here is the
+    simplest thing to do. It makes the result more consistent.
+    """
+    try:
+        if isinstance(data['companies']['company'], dict):
+            data['companies']['company'] = list(data['companies']['company'])
+    except IndexError:
+        pass
+    return data
+
+
 class GiftsClient(object):
     """
     API wrapper for the HEPdata Matching Gifts database API
@@ -109,7 +124,7 @@ class GiftsClient(object):
         if error:
             raise exceptions.HEPError(error)
 
-        return data
+        return clean_data(data)
 
     def profile(self, profile_id):
         """
