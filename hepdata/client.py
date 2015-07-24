@@ -84,8 +84,8 @@ def clean_data(data):
     simplest thing to do. It makes the result more consistent.
     """
     try:
-        if isinstance(data['companies']['company'], dict):
-            data['companies']['company'] = list(data['companies']['company'])
+        if not isinstance(data['companies']['company'], list):
+            data['companies']['company'] =[data['companies']['company']]
     except IndexError:
         pass
     return data
