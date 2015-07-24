@@ -85,8 +85,8 @@ def clean_data(data):
     """
     try:
         if not isinstance(data['companies']['company'], list):
-            data['companies']['company'] =[data['companies']['company']]
-    except IndexError:
+            data['companies']['company'] = [data['companies']['company']]
+    except KeyError:
         pass
     return data
 

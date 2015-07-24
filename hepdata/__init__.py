@@ -2,7 +2,7 @@
 
 __author__ = 'Ben Lopatin'
 __email__ = 'ben@wellfire.co'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 
 from hepdata.client import GiftsClient  # noqa
