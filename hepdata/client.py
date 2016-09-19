@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 import logging
 try:
-    from urllib import urlencode
-except ImportError:
     from urllib.parse import urlencode
+except ImportError:
+    # Python 2!
+    from urllib import urlencode as base_urlencode
+
+    def urlencode(params):
+        clean_data = {}
+        for k, v in params.iteritems():
+            clean_data[k] = unicode(v).encode('utf-8')
+        return base_urlencode(clean_data)
 
 import requests
 import xmltodict
