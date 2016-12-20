@@ -11,8 +11,10 @@ except ImportError:
 
     def urlencode(params):
         clean_data = {}
+
         for k, v in params.iteritems():
             clean_data[k] = unicode(v).encode('utf-8')
+
         return base_urlencode(clean_data)
 
 import requests
@@ -32,7 +34,7 @@ SEARCH_PARAMS = [
     "gift_ratio_greater_11",
     "inclusion",
     "exclusion",
-]
+    ]
 
 ELIGIBILITY_PARAMS = [
     "four_year_college_universities",  # Four Year College eligibility
@@ -53,7 +55,7 @@ ELIGIBILITY_PARAMS = [
     "social_services",  # ",  # "NYC Rescue) eligibility
     "performing_arts",  # ",  # "Wolftrap) eligibility
     "college_university_radio_tv",  # ",  # "WNMU-FM) eligibility
-    "public_radio_tv",  # ",  # "NPR)                                    eligibility
+    "public_radio_tv",  # ",  # "NPR) eligibility
     "religious",  # Church eligibility
     "environmental_conservation",  # ",  # "Greenpeace) eligibility
     "cultural",  # ",  # "Wolftrap) eligibility
@@ -79,7 +81,7 @@ ELIGIBILITY_PARAMS = [
     "single_disease",  # Non-profit Hosp. eligibility
     "athletics",  # Athletic eligibility
     "volunteer_programs",  # Volunteer Prog. Eligibility
-]
+    ]
 
 
 VALID_PARAMS = set(SEARCH_PARAMS + ELIGIBILITY_PARAMS)
@@ -107,7 +109,8 @@ class GiftsClient(object):
 
     def __init__(self, key):
         self.key = key
-        self.url = "http://automatch.matchinggifts.com/{{action}}/xml/{key}/".format(key=key)
+        self.url = ("http://automatch.matchinggifts.com/"
+                    "{{action}}/xml/{key}/").format(key=key)
 
     def _get_url(self, action, param=None, **query):
         url = self.url.format(action=action)
@@ -116,22 +119,28 @@ class GiftsClient(object):
 
         if query:
             url += "?{q}".format(q=urlencode(query))
+
         return url
 
     def _req(self, action, param=None, **query):
         """
-        Issues an HTTP request and returns the response as a Python dictionary.
+        Issues an HTTP request and returns the response as a Python
+        dictionary.
         """
         response = requests.get(self._get_url(action, param, **query))
+        print(response.status_code)
 
         if response.status_code != 200:
-            raise exceptions.HEPError(code=response.status_code, response=response)
+            raise exceptions.HEPError(code=response.status_code,
+                                      response=response)
 
         data = xmltodict.parse(response.content)
-
         error = data.get('error', None)
-        if error:
-            raise exceptions.HEPError(error)
+
+        if error.isdigit():
+            raise exceptions.HEPError(code=int(error))
+        elif error:
+            raise exceptions.HEPError(msg=error)
 
         return clean_data(data)
 
@@ -146,7 +155,8 @@ class GiftsClient(object):
         """
         for k in query.keys():
             if k not in VALID_PARAMS:
-                logger.warn("'{}' is not a valid matching gifts search parameter".format(k))
+                logger.warn("'%s' is not a valid matching gifts "
+                            "search parameter", k)
 
         return self._req(action=path, param=search_value, **query)
 
