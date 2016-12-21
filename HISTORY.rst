@@ -3,6 +3,11 @@
 History
 -------
 
+0.1.5 (2016-12-20)
+------------------
+
+* Fixes missing error code and updates testing/build documentation
+
 0.1.4 (2016-09-19)
 ------------------
 
