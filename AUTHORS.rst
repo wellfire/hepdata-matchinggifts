@@ -10,4 +10,4 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+* `Carl J. Nobile <https://github.com/cnobile2012>`_
