@@ -8,8 +8,9 @@ HEPdata Matching Gifts API client
 .. image:: https://travis-ci.org/wellfire/hepdata-matchinggifts.svg?branch=master
         :target: https://travis-ci.org/wellfire/hepdata-matchinggifts
 
-.. image:: https://pypip.in/d/hepdata/badge.svg
-        :target: https://pypi.python.org/pypi/hepdata
+.. image:: https://img.shields.io/pypi/v/hepdata.svg?style=flat
+        :alt: PyPI Version
+        :target: https://pypi.org/project/hepdata/
 
 A Python wrapper for the `HEPdata Matching Gifts database API <http://www.hepdata.com/>`_.
 
