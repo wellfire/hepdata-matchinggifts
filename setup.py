@@ -24,8 +24,8 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
-    "requests",
-    "xmltodict",
+    "requests>=2.0,<3.0",
+    "xmltodict>=0.10.0,<1.0",
 ]
 
 setup(

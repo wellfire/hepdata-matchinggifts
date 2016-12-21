@@ -21,4 +21,18 @@ From PyPI:
 
     pip install hepdata
 
+Testing
+=======
+
+First install `tox <https://tox.readthedocs.io/en/latest/>`_` and then run:
+
+    tox
+
+If you'd prefer not to run the tests from a `tox` environment, ensure you install the package first:
+
+    python setup.py develop
+
+License
+=======
+
 Licensed under the terms of the GPL v2.
