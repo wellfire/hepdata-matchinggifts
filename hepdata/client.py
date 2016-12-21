@@ -13,7 +13,7 @@ except ImportError:
         clean_data = {}
 
         for k, v in params.iteritems():
-            clean_data[k] = unicode(v).encode('utf-8')
+            clean_data[k] = unicode(v).encode('utf-8')  # noqa
 
         return base_urlencode(clean_data)
 
