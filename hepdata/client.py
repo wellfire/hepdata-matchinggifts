@@ -34,7 +34,7 @@ SEARCH_PARAMS = [
     "gift_ratio_greater_11",
     "inclusion",
     "exclusion",
-    ]
+]
 
 ELIGIBILITY_PARAMS = [
     "four_year_college_universities",  # Four Year College eligibility
@@ -81,7 +81,7 @@ ELIGIBILITY_PARAMS = [
     "single_disease",  # Non-profit Hosp. eligibility
     "athletics",  # Athletic eligibility
     "volunteer_programs",  # Volunteer Prog. Eligibility
-    ]
+]
 
 
 VALID_PARAMS = set(SEARCH_PARAMS + ELIGIBILITY_PARAMS)

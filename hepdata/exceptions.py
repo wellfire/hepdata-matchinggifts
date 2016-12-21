@@ -6,7 +6,7 @@ APP_ERRORS = {
     8: "IP address not whitelisted",
     9: "No profile matches the provided ID",
     10: "License key error",
-    }
+}
 
 
 class HEPError(Exception):
