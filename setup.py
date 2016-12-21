@@ -35,7 +35,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author='Ben Lopatin',
     author_email='ben@wellfire.co',
-    url='https://github.com/wellfire/hepdata',
+    url='https://github.com/wellfire/hepdata-matchinggifts',
     packages=[
         'hepdata',
     ],
