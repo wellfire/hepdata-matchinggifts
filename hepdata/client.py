@@ -109,8 +109,7 @@ class GiftsClient(object):
 
     def __init__(self, key):
         self.key = key
-        self.url = ("http://automatch.matchinggifts.com/"
-                    "{{action}}/xml/{key}/").format(key=key)
+        self.url = "https://automatch.matchinggifts.com/{{action}}/xml/{key}/".format(key=key)
 
     def _get_url(self, action, param=None, **query):
         url = self.url.format(action=action)

@@ -22,7 +22,7 @@ class TestClient(unittest.TestCase):
         c = client.GiftsClient("AABBCC")
         self.assertEqual(
             c._get_url("profiles"),
-            "http://automatch.matchinggifts.com/profiles/xml/AABBCC/",
+            "https://automatch.matchinggifts.com/profiles/xml/AABBCC/",
         )
 
     def test_url_param(self):
@@ -30,7 +30,7 @@ class TestClient(unittest.TestCase):
         c = client.GiftsClient("AABBCC")
         self.assertEqual(
             c._get_url("profiles", 1234),
-            "http://automatch.matchinggifts.com/profiles/xml/AABBCC/1234/",
+            "https://automatch.matchinggifts.com/profiles/xml/AABBCC/1234/",
         )
 
     def test_url_param_query(self):
@@ -38,7 +38,7 @@ class TestClient(unittest.TestCase):
         c = client.GiftsClient("AABBCC")
         self.assertEqual(
             c._get_url("profiles", 1234, city="Arlington, VA"),
-            "http://automatch.matchinggifts.com/profiles/xml/AABBCC/1234/?city=Arlington%2C+VA",
+            "https://automatch.matchinggifts.com/profiles/xml/AABBCC/1234/?city=Arlington%2C+VA",
         )
 
     def test_url_unicode(self):
@@ -46,7 +46,7 @@ class TestClient(unittest.TestCase):
         c = client.GiftsClient("AABBCC")
         self.assertEqual(
             c._get_url("search_names", "üsåâ", city="Arlingtîn, VA"),
-            "http://automatch.matchinggifts.com/search_names/xml/AABBCC/üsåâ/?city=Arlingt%C3%AEn%2C+VA",
+            "https://automatch.matchinggifts.com/search_names/xml/AABBCC/üsåâ/?city=Arlingt%C3%AEn%2C+VA",
         )
 
     def test_clean_data(self):
